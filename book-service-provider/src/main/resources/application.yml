@@ -1,0 +1,30 @@
+
+server:
+  port: 10007
+
+spring:
+#  profiles: peer1
+  application:
+    name: book-service-provider
+
+  cloud:
+    consul:
+      host: 10.5.72.54
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        service-name: ${spring.application.name}
+        tags: version=1.0
+
+#        health-check-path: /actuator/health
+        health-check-interval: 5s
+        health-check-critical-timeout: 3m
+
+#spring:
+#  could:
+#    inetutils:
+#     preferred-networks:
+#       - 10.5.*.*
+#       - 10.103.*
+#       - 10.105.*

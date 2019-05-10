@@ -1,0 +1,23 @@
+
+server:
+  port: 20001
+
+spring:
+#  profiles: peer1
+  application:
+    name: book-service-consumer
+
+  cloud:
+    consul:
+      host: 10.5.72.54
+      port: 8500
+      discovery:
+        register: false # Do not Register as a service in consul.
+
+#spring:
+#  could:
+#    inetutils:
+#     preferred-networks:
+#       - 10.5.*.*
+#       - 10.103.*
+#       - 10.105.*
