@@ -1,6 +1,8 @@
 package my.controller;
 
-import my.BookClient;
+import my.BookServiceClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -15,13 +17,15 @@ import static java.util.stream.Collectors.toList;
 
 @RestController
 public class BookServiceConsumerController {
-    private final String SERVICE_NAME = "book-service-provider";
+    private Logger log = LoggerFactory.getLogger(BookServiceConsumerController.class);
+
+    private final String SERVICE_NAME = BookServiceClient.SERVICE_NAME;
     @Autowired
     private RestTemplate restTemplate;
     @Autowired
     private DiscoveryClient discoveryClient;
     @Autowired
-    private BookClient bookClient;
+    private BookServiceClient bookClient;
 
     @RequestMapping("/")
     public String home() {
@@ -47,6 +51,7 @@ public class BookServiceConsumerController {
 
     @RequestMapping("/book2")
     public String getBook2() {
+        log.info("getBook2");
         return bookClient.getBook(2);
     }
 

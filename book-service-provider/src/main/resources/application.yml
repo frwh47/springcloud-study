@@ -1,6 +1,6 @@
 
 server:
-  port: 10007
+  port: 10001
 
 spring:
 #  profiles: peer1

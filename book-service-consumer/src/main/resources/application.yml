@@ -2,6 +2,16 @@
 server:
   port: 20001
 
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+
 spring:
 #  profiles: peer1
   application:

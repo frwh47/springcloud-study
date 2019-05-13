@@ -13,10 +13,11 @@ https://www.consul.io/
 ```
 
 ## 2. start service
-
 ```
 mvn clean package
 mvn spring-boot:run
 
-java -jar consul-client-1.0.jar
+java -jar target/xxx.jar
 ```
+
+## 3. register service on consul
